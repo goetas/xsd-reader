@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Xsd-reader : Read XSD into PHP" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Xsd-reader</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/goetas/xsd-reader">View on GitHub</a>
+
+          <h1 id="project_title">Xsd-reader</h1>
+          <h2 id="project_tagline">Read XSD into PHP</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/goetas/xsd-reader/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/goetas/xsd-reader/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="https://travis-ci.org/goetas/xsd-reader"><img src="https://travis-ci.org/goetas/xsd-reader.svg?branch=master" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/goetas/xsd-reader/?branch=master"><img src="https://scrutinizer-ci.com/g/goetas/xsd-reader/badges/coverage.png?b=master" alt="Code Coverage"></a>
+<a href="https://scrutinizer-ci.com/g/goetas/xsd-reader/?branch=master"><img src="https://scrutinizer-ci.com/g/goetas/xsd-reader/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"></a></p>
+
+<h1>
+<a name="php-xsd-reader" class="anchor" href="#php-xsd-reader"><span class="octicon octicon-link"></span></a>PHP XSD Reader</h1>
+
+<p>Read any <a href="http://www.w3.org/XML/Schema">XML Schema</a> (XSD) programmatically with PHP.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>There are two recommended ways to install the <code>xsd-reader</code> via <a href="https://getcomposer.org/">Composer</a>:</p>
+
+<ul>
+<li>using the <code>composer require</code> command:</li>
+</ul><div class="highlight highlight-bash"><pre>composer require <span class="s1">'goetas/xsd-reader:1.*'</span>
+</pre></div>
+
+<ul>
+<li>adding the dependency to your <code>composer.json</code> file:</li>
+</ul><div class="highlight highlight-js"><pre><span class="s2">"require"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="p">..</span>
+    <span class="s2">"goetas/xsd-reader"</span> <span class="o">:</span> <span class="s2">"1.*"</span><span class="p">,</span>
+    <span class="p">..</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h2>
+
+<div class="highlight highlight-php"><pre><span class="k">use</span> <span class="nx">Goetas\XML\XSDReader\SchemaReader</span><span class="p">;</span>
+
+<span class="nv">$reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SchemaReader</span><span class="p">();</span>
+<span class="nv">$schema</span> <span class="o">=</span> <span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">readFile</span><span class="p">(</span><span class="s2">"http://www.example.com/exaple.xsd"</span><span class="p">);</span>
+
+<span class="c1">// $schema is instance of Goetas\XML\XSDReader\Schema\Schema;</span>
+
+<span class="c1">// Now you can navigate the entire schema structure</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">getSchema</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$innerSchema</span><span class="p">){</span>
+
+<span class="p">}</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">getTypes</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$type</span><span class="p">){</span>
+
+<span class="p">}</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">getElements</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">){</span>
+
+<span class="p">}</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">getGroups</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$group</span><span class="p">){</span>
+
+<span class="p">}</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">getAttributes</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$attr</span><span class="p">){</span>
+
+<span class="p">}</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">getAttributeGroups</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$attrGroup</span><span class="p">){</span>
+
+<span class="p">}</span>
+
+
+</pre></div>
+
+<h2>
+<a name="note" class="anchor" href="#note"><span class="octicon octicon-link"></span></a>Note</h2>
+
+<p>I'm sorry for the <em>terrible</em> english fluency used inside the documentation, I'm trying to improve it. 
+Pull Requests are welcome.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Xsd-reader maintained by <a href="https://github.com/goetas">goetas</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
