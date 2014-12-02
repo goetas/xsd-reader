@@ -63,6 +63,16 @@ class UrlUtils
             $abs = $parts["scheme"].'://'.$abs;
         }
 
+        // Handle local files.
+        if ($parts["scheme"] == 'file') {
+            // Remove protocol for local files. And try to ensure the returned
+            // path is an absolute, system-specific file path.
+            $abs = str_replace('file://', '', $abs);
+            if (($abs_real = realpath($abs))) {
+                $abs = $abs_real;
+            }
+        }
+
         return $abs;
     }
 
