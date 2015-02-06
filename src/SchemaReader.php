@@ -555,7 +555,7 @@ class SchemaReader
             list ($prefix, $name) = explode(':', $typeName);
         }
 
-        $namespace = $node->lookupNamespaceURI($prefix);
+        $namespace = $node->lookupNamespaceURI($prefix ?: null);
         return array(
             $name,
             $namespace,
