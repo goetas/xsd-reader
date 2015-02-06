@@ -42,7 +42,7 @@ $schema = $reader->readFile("http://www.example.com/exaple.xsd");
 
 // Now you can navigate the entire schema structure
 
-foreach ($schema->getSchema() as $innerSchema){
+foreach ($schema->getSchemas() as $innerSchema){
 
 }
 foreach ($schema->getTypes() as $type){
@@ -67,5 +67,5 @@ foreach ($schema->getAttributeGroups() as $attrGroup){
 Note
 ----
 
-I'm sorry for the *terrible* english fluency used inside the documentation, I'm trying to improve it. 
+I'm sorry for the *terrible* english fluency used inside the documentation, I'm trying to improve it.
 Pull Requests are welcome.
